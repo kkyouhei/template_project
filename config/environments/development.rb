@@ -38,6 +38,9 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # vagrant上だとbetter_errorsが表示されない対応
+  BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
   
   # bullet config
   config.after_initialize do
