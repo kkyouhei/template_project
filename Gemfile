@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.5'
 
 # フロント関連のgem
+gem 'slim-rails'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0' # JavaScriptのソースを軽量化を
 gem 'therubyracer', platforms: :ruby # rubyからv8を扱えるようにする
