@@ -1,47 +1,47 @@
 source 'https://rubygems.org'
 
-
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
-# Use SCSS for stylesheets
+
+# フロント関連のgem
 gem 'sass-rails', '~> 5.0'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby
+gem 'uglifier', '>= 1.3.0' # JavaScriptのソースを軽量化を
+gem 'therubyracer', platforms: :ruby # rubyからv8を扱えるようにする
 
-# Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+gem 'coffee-rails', '~> 4.1.0'
 gem 'turbolinks'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+
+# DB関連のgem
+gem 'mysql2'
+
+# その他
 gem 'jbuilder', '~> 2.0'
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+group :production, :staging do
+    gem 'unicorn' # HTTPサーバ
+end
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  # デバック関連のgem
+  gem 'pry-rails' # railsでpryが使える
+  gem 'pry-byebug' # pryでデバックコマンドが使える
+  gem 'pry-doc'
+  gem 'pry-remote'
 end
 
 group :development do
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
+  gem 'better_errors' # エラー画面を見やすくする
+  gem 'binding_of_caller' # better_errorsのエラー画面でREPLが使える
 
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  gem 'spring' # 必要なライブラリ先読み
+  gem 'spring-commands-rspec' # springをrspecで使用するためのgem
+
+  # チューニングのためのgem
+  gem 'bullet' # N+1問題を検出
+  gem 'rack-mini-profiler', require: false # パフォーマンスチェック
 end
 
+# ドキュメント関連
+group :doc do
+  gem 'yard', require: false
+end
