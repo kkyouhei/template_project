@@ -15,6 +15,9 @@ gem 'turbolinks'
 # DB関連のgem
 gem 'mysql2'
 
+# AWS
+gem 'aws-sdk', '~>2'
+
 # その他
 gem 'jbuilder', '~> 2.0'
 
@@ -31,15 +34,26 @@ group :development, :test do
 end
 
 group :development do
+  # デバック関連のgem
   gem 'better_errors' # エラー画面を見やすくする
   gem 'binding_of_caller' # better_errorsのエラー画面でREPLが使える
-
-  gem 'spring' # 必要なライブラリ先読み
-  gem 'spring-commands-rspec' # springをrspecで使用するためのgem
 
   # チューニングのためのgem
   gem 'bullet' # N+1問題を検出
   gem 'rack-mini-profiler', require: false # パフォーマンスチェック
+
+  # デプロイ系
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano3-unicorn'
+
+  # その他
+  gem 'spring' # 必要なライブラリ先読み
+  gem 'spring-commands-rspec' # springをrspecで使用するためのgem
+  gem 'rename' # プロジェクト名を変更
+
 end
 
 # ドキュメント関連
